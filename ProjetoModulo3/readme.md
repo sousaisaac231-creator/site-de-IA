@@ -7,7 +7,7 @@ Estrutura_Projeto_GitHub_LowCode_NoCode.png
 
 ## 📌 Desafio Escolhido
 
-Descreva aqui o desafio proposto pelo grupo (ex.: cadastro de usuários, automação de envio de e-mails, integração com API de IA).
+Agendar horário na barbearia.
 
 ---
 
@@ -23,9 +23,9 @@ Descreva aqui o desafio proposto pelo grupo (ex.: cadastro de usuários, automa�
 
 ## ⚙️ Plataforma Utilizada
 
-- Nome da plataforma (ex.: Bubble, Make, Pipedream).
+- Nome da plataforma: Replt.
 
-- Justificativa da escolha: por que essa ferramenta foi selecionada para o desafio?
+- Justificativa da escolha: Uma preferia da equipe.
 
 ---
 
@@ -33,11 +33,8 @@ Descreva aqui o desafio proposto pelo grupo (ex.: cadastro de usuários, automa�
 
 Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code/vibecode:
 
-1. 
+1. Entregou o site esperado.
 
-2. 
-
-3. 
 
 ---
 
@@ -45,11 +42,8 @@ Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code
 
 Liste pelo menos **3 limitações** percebidas:
 
-1. 
-
-2. 
-
-3. 
+1. Não permitir mais de dois acessos.
+2.  
 
 ---
 
