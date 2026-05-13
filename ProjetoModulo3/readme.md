@@ -34,7 +34,8 @@ Agendar horário na barbearia.
 Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code/vibecode:
 
 1. Entregou o site esperado.
-
+2. 
+3.
 
 ---
 
@@ -43,8 +44,8 @@ Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code
 Liste pelo menos **3 limitações** percebidas:
 
 1. Não permitir mais de dois acessos.
-2.  
-
+2. 
+3.
 ---
 
 ## 📚 Reflexão Crítica
@@ -56,6 +57,7 @@ Explique como o grupo lidou com as limitações e quais soluções criativas for
 ## 👥 Colaboração
 
 Descreva como o grupo organizou as tarefas e responsabilidades entre os integrantes.
+
 
 ---
 
