@@ -1,24 +1,27 @@
-# site-de-IA
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Barbearia Elite - Agendamento online de cortes premium com profissionais experientes">
-    <meta name="theme-color" content="#D4AF37">
-    <title>Barbearia Elite | Agendamento Online</title>
+    <title>Barbearia Elite | Estilo e Tradição</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (Ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Animate on Scroll Library -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <style>
+        /* --- VARIÁVEIS E RESET --- */
         :root {
-            --primary: #D4AF37;
-            --dark: #0a0a0a;
-            --dark-2: #161616;
-            --white: #ffffff;
-            --gray: #999;
+            --primary-color: #D4AF37; /* Dourado */
+            --secondary-color: #1a1a1a; /* Preto Suave */
+            --bg-dark: #0a0a0a; /* Preto Profundo */
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
             --transition: all 0.3s ease;
         }
 
@@ -26,546 +29,595 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            scroll-behavior: smooth;
         }
 
-        html { scroll-behavior: smooth; }
         body {
-            background: var(--dark);
-            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        section { padding: 80px 20px; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
 
-        /* --- HEADER & NAVIGATION --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        /* --- HEADER & NAV --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.98);
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px 0;
+            transition: var(--transition);
         }
 
-        .nav-content {
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
         .logo {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
             gap: 30px;
         }
 
-        .nav-menu a {
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: var(--transition);
         }
 
-        .nav-menu a:hover::after { width: 100%; }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
-        .menu-toggle {
+        .mobile-menu-icon {
             display: none;
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 1.8rem;
+            color: var(--primary-color);
             cursor: pointer;
-            background: none;
-            border: none;
         }
 
-        /* --- HERO --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 60px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            animation: fadeInDown 0.8s ease;
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #ccc;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
+            margin-bottom: 35px;
+            color: var(--text-gray);
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* --- SOBRE NÓS --- */
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            border-bottom: 10px solid var(--primary-color);
+            border-right: 10px solid var(--primary-color);
         }
 
-        /* --- BOTÕES --- */
-        .btn-primary {
-            padding: 15px 40px;
-            background: var(--primary);
-            color: var(--dark);
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 1rem;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
         }
 
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-primary:active { transform: scale(0.98); }
-
-        .btn-sm {
-            padding: 8px 20px;
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            cursor: pointer;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .btn-sm:hover {
-            background: var(--primary);
-            color: var(--dark);
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
         }
 
         /* --- SERVIÇOS --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
-        .card {
-            background: var(--dark-2);
-            padding: 30px;
-            border-radius: 8px;
+        .service-card {
+            background: var(--secondary-color);
+            padding: 40px 30px;
             text-align: center;
-            border: 1px solid #333;
+            border-radius: 10px;
             transition: var(--transition);
+            border: 1px solid #333;
         }
 
-        .card:hover {
-            border-color: var(--primary);
+        .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--primary-color);
         }
 
-        .card i {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
 
-        .card h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            color: #ccc;
+        .service-card h3 {
             margin-bottom: 15px;
-        }
-
-        .card .price {
             font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: block;
-            margin: 15px 0;
         }
 
-        /* --- SOBRE --- */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
+        .price {
             font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-top: 15px;
         }
 
-        .about-text p {
-            margin-bottom: 15px;
-            color: #ccc;
-            line-height: 1.8;
+        /* --- GALERIA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
         }
 
-        .about-img {
-            border-radius: 8px;
+        .gallery-item {
+            height: 300px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
         }
 
-        .about-img img {
+        .gallery-item img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
+            filter: grayscale(100%);
         }
 
-        .about-img:hover img { transform: scale(1.05); }
-
-        /* --- CONTATO --- */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
         }
 
-        .form-group {
+        /* --- DEPOIMENTOS --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #111;
+            padding: 30px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
             margin-bottom: 20px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--white);
+        .client-name {
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: var(--dark-2);
-            border: 1px solid #333;
-            color: var(--white);
-            border-radius: 4px;
-            font-family: 'Montserrat', sans-serif;
+        .stars {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- LOCALIZAÇÃO E CONTATO --- */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            font-size: 1.8rem;
+            color: var(--text-light);
             transition: var(--transition);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        .social-links a:hover {
+            color: var(--primary-color);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-message {
-            display: none;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
+        /* --- WHATSAPP FIXO --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
             text-align: center;
-            font-weight: 600;
-        }
-
-        .form-message.success {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            display: block;
-        }
-
-        .form-message.error {
-            background: rgba(244, 67, 54, 0.2);
-            color: #f44336;
-            display: block;
+            font-size: 35px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* --- FOOTER --- */
         footer {
-            background: var(--dark-2);
-            padding: 40px 20px;
+            padding: 50px 0;
             text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid #333;
+            background-color: #000;
         }
 
-        footer p {
-            color: var(--gray);
-            margin: 10px 0;
-        }
-
-        footer .highlight {
-            color: var(--primary);
-        }
-
-        /* --- SEÇÃO h2 --- */
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--primary);
-        }
-
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background: rgba(10, 10, 10, 0.99);
-                padding: 20px;
-                gap: 15px;
+            .nav-links {
+                display: none; /* Seria necessário JS para menu mobile completo */
             }
 
-            .nav-menu.active { display: flex; }
+            .mobile-menu-icon {
+                display: block;
+            }
 
-            .menu-toggle { display: block; }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
 
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
+            .about-flex {
+                flex-direction: column;
+            }
 
-            .about { grid-template-columns: 1fr; }
-
-            section { padding: 50px 20px; }
-
-            section h2 { font-size: 2rem; }
-
-            .about-text h3 { font-size: 1.5rem; }
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-    <div class="nav-content">
-        <div class="logo">✂️ ELITE BARBER</div>
-        <nav class="nav-menu">
-            <a href="#home">Home</a>
-            <a href="#services">Serviços</a>
-            <a href="#about">Sobre</a>
-            <a href="#contact">Contato</a>
-        </nav>
-        <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-    </div>
-</header>
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- HERO SECTION -->
-<section class="hero" id="home">
-    <div class="container">
-        <h1>Barbearia Elite</h1>
-        <p>Agendamento Online de Cortes Premium</p>
-        <button class="btn-primary" onclick="scrollTo('#services')" aria-label="Agende seus serviços">Agende Agora</button>
-    </div>
-</section>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">ELITE BARBER</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <div class="mobile-menu-icon">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<!-- SERVIÇOS -->
-<section id="services" style="background: var(--dark-2);">
-    <div class="container">
-        <h2>Nossos Serviços</h2>
-        <div class="services-grid">
-            <div class="card">
-                <i class="fas fa-cut"></i>
-                <h3>Corte Clássico</h3>
-                <p>Corte tradicional com acabamento impecável</p>
-                <span class="price">R$ 45,00</span>
-                <button class="btn-sm" onclick="alert('Redirecionando para agendamento...')">Agendar</button>
-            </div>
-            <div class="card">
-                <i class="fas fa-face-smile-wink"></i>
-                <h3>Corte + Barba</h3>
-                <p>Corte + design de barba completo</p>
-                <span class="price">R$ 65,00</span>
-                <button class="btn-sm" onclick="alert('Redirecionando para agendamento...')">Agendar</button>
-            </div>
-            <div class="card">
-                <i class="fas fa-spray-can"></i>
-                <h3>Design de Sobrancelha</h3>
-                <p>Design profissional e alinhamento</p>
-                <span class="price">R$ 30,00</span>
-                <button class="btn-sm" onclick="alert('Redirecionando para agendamento...')">Agendar</button>
-            </div>
-            <div class="card">
-                <i class="fas fa-water"></i>
-                <h3>Pigmentação de Barba</h3>
-                <p>Tingimento profissional de barba</p>
-                <span class="price">R$ 55,00</span>
-                <button class="btn-sm" onclick="alert('Redirecionando para agendamento...')">Agendar</button>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="reveal-top">Seu estilo começa aqui</h1>
+                <p class="reveal-bottom">Cortes modernos, barba e experiência premium em um ambiente exclusivo.</p>
+                <a href="https://wa.me/5500000000000" class="btn reveal-bottom">Agendar pelo WhatsApp</a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- SOBRE -->
-<section id="about">
-    <div class="container">
-        <h2>Sobre a Barbearia Elite</h2>
-        <div class="about">
-            <div class="about-text">
-                <h3>Tradição e Excelência</h3>
-                <p>
-                    Há mais de 15 anos, a Barbearia Elite oferece os melhores serviços de barbearia para homens que valorizam qualidade e estilo.
-                </p>
-                <p>
-                    Nossos profissionais são treinados e experientes, utilizando produtos premium para garantir o melhor resultado.
-                </p>
-                <p>
-                    Venha conhecer nosso espaço aconchegante e deixe-se envolver pelo atendimento personalizado.
-                </p>
-            </div>
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1599912676162-22d01489fb33?auto=format&fit=crop&w=500&q=60" alt="Espaço da Barbearia Elite com profissionais trabalhando">
+    <!-- SOBRE NÓS -->
+    <section id="sobre">
+        <div class="container">
+            <div class="about-flex">
+                <div class="about-img reveal-left">
+                    <img src="https://images.unsplash.com/photo-1593702295094-ada35bc1307e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Barbeiro trabalhando">
+                </div>
+                <div class="about-text reveal-right">
+                    <div class="section-title" style="text-align: left; margin-bottom: 20px;">
+                        <span>Nossa História</span>
+                        <h2>Tradição & Qualidade</h2>
+                    </div>
+                    <p>A Barbearia Elite nasceu da paixão pela cutelaria clássica e pelo design moderno. Aqui, cada cliente é único e cada corte é uma obra de arte.</p>
+                    <p>Com mais de 10 anos de experiência, nossos profissionais estão em constante atualização para oferecer o que há de melhor no mundo da estética masculina, desde o degradê perfeito até o tratamento de toalha quente tradicional.</p>
+                    <a href="#servicos" class="btn" style="margin-top: 20px;">Veja nossos serviços</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- CONTATO -->
-<section id="contact" style="background: var(--dark-2);">
-    <div class="container">
-        <h2>Fale Conosco</h2>
-        <div class="contact-form">
-            <div class="form-message" id="formMessage"></div>
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" required minlength="3">
+    <!-- SERVIÇOS -->
+    <section id="servicos" style="background-color: #0f0f0f;">
+        <div class="container">
+            <div class="section-title reveal-top">
+                <span>O que fazemos de melhor</span>
+                <h2>Nossos Serviços</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Serviço 1 -->
+                <div class="service-card reveal-bottom">
+                    <i class="fas fa-cut"></i>
+                    <h3>Corte Masculino</h3>
+                    <p>Cortes modernos, clássicos ou degradê com acabamento impecável.</p>
+                    <span class="price">R$ 40</span>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
+                <!-- Serviço 2 -->
+                <div class="service-card reveal-bottom">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Barba Completa</h3>
+                    <p>Modelagem, hidratação e técnica de toalha quente.</p>
+                    <span class="price">R$ 35</span>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Telefone</label>
-                    <input type="tel" id="phone" name="phone" required>
+                <!-- Serviço 3 -->
+                <div class="service-card reveal-bottom">
+                    <i class="fas fa-mustache"></i>
+                    <h3>Corte + Barba</h3>
+                    <p>O combo completo para renovar seu visual com desconto.</p>
+                    <span class="price">R$ 70</span>
                 </div>
-                <div class="form-group">
-                    <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" required minlength="10"></textarea>
+                <!-- Serviço 4 -->
+                <div class="service-card reveal-bottom">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Pigmentação</h3>
+                    <p>Destaque seu corte ou cubra falhas com naturalidade.</p>
+                    <span class="price">R$ 30</span>
                 </div>
-                <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensagem</button>
-            </form>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <p>&copy; 2026 Barbearia Elite. Todos os direitos reservados.</p>
-        <p>
-            <span class="highlight">✂️ Agendamento Online</span> |
-            <span class="highlight">Qualidade Premium</span> |
-            <span class="highlight">Profissionais Experientes</span>
-        </p>
-    </div>
-</footer>
+    <!-- GALERIA -->
+    <section id="galeria">
+        <div class="container">
+            <div class="section-title reveal-top">
+                <span>Portfólio</span>
+                <h2>Galeria de Estilos</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815841-aa8975485d29?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Corte 1"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599351431247-f10b21ce963f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Corte 2"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Corte 3"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1536520002442-39764a41e987?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Corte 4"></div>
+            </div>
+        </div>
+    </section>
 
-<script>
-    // Smooth scroll function
-    function scrollTo(selector) {
-        const element = document.querySelector(selector);
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos" style="background-color: #0f0f0f;">
+        <div class="container">
+            <div class="section-title reveal-top">
+                <span>Opinião de quem frequenta</span>
+                <h2>Depoimentos</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal-bottom">
+                    <div class="stars">★★★★★</div>
+                    <p>"Melhor barbearia da cidade. O ambiente é incrível e o atendimento é diferenciado. O café é ótimo!"</p>
+                    <span class="client-name">- Ricardo Santos</span>
+                </div>
+                <div class="testimonial-card reveal-bottom">
+                    <div class="stars">★★★★★</div>
+                    <p>"Faço barba e cabelo toda semana. A precisão no degradê é impressionante. Recomendo muito!"</p>
+                    <span class="client-name">- Marcos Oliveira</span>
+                </div>
+                <div class="testimonial-card reveal-bottom">
+                    <div class="stars">★★★★★</div>
+                    <p>"Ambiente extremamente limpo e profissional. O sistema de agendamento pelo WhatsApp facilita muito."</p>
+                    <span class="client-name">- Felipe Mendes</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    <!-- LOCALIZAÇÃO E CONTATO -->
+    <section id="contato">
+        <div class="container">
+            <div class="section-title reveal-top">
+                <span>Onde estamos</span>
+                <h2>Contato e Localização</h2>
+            </div>
+            <div class="contact-flex">
+                <div class="contact-info reveal-left">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Av. Principal, 1234 - Centro, Cidade - UF</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 98888-7777</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Seg a Sex: 09h às 20h<br>Sábados: 09h às 18h</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="map-container reveal-right">
+                    <!-- Mapa Fictício (Google Maps Embed) -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975!2d-46.658!3d-23.561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzQwLjAiUyA0NsKwMzknMjguOCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" 
+                        width="100%" height="100%" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    menuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-    });
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Barbearia Elite. Todos os direitos reservados.</p>
+            <p style="font-size: 0.7rem; color: #555; margin-top: 10px;">Desenvolvido com elegância.</p>
+        </div>
+    </footer>
 
-    // Close menu when link is clicked
-    navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+    <!-- SCRIPTS -->
+    <script>
+        // Mudar fundo do header ao rolar
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
-    });
 
-    // Form submission with validation
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
+        // Configuração do ScrollReveal (Animações)
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '60px',
+            duration: 1000,
+            delay: 200,
+            reset: false // anima apenas uma vez
+        });
 
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+        sr.reveal('.reveal-top', {origin: 'top'});
+        sr.reveal('.reveal-bottom', {origin: 'bottom'});
+        sr.reveal('.reveal-left', {origin: 'left'});
+        sr.reveal('.reveal-right', {origin: 'right'});
+        sr.reveal('.service-card', {interval: 200});
+        sr.reveal('.gallery-item', {interval: 150});
+        sr.reveal('.testimonial-card', {interval: 200});
 
-        // Validation
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if (!name || !email || !phone || !message) {
-            showMessage('Por favor, preencha todos os campos.', 'error');
-            return;
-        }
-
-        if (message.length < 10) {
-            showMessage('A mensagem deve ter pelo menos 10 caracteres.', 'error');
-            return;
-        }
-
-        // Success (in a real app, this would send data to a server)
-        showMessage('✓ Obrigado! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve.', 'success');
-        this.reset();
-
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    });
-
-    function showMessage(text, type) {
-        formMessage.textContent = text;
-        formMessage.className = `form-message ${type}`;
-    }
-</script>
-
+        // Clique suave no menu (compatibilidade extra)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
