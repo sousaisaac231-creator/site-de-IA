@@ -34,8 +34,8 @@ Agendar horário na barbearia.
 Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code/vibecode:
 
 1. Entregou o site esperado.
-2. 
-3.
+2. Pode criar website, Mobile, 3D Game, Design, etc
+3. É possível editar todo o formato do projeto
 
 ---
 
