@@ -44,16 +44,15 @@ Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code
 
 Liste pelo menos **3 limitações** percebidas:
 
-1.Acesso limitado.
-2. Sistema complexo.
-3.
+1. Acesso limitado.
+2. Sistema complexo e pouco intuitivo.
+3. Possui apenas um idioma.
 
 ---
 
 ## 📚 Reflexão Crítica
 
-Explique como o grupo lidou com as limitações e quais soluções criativas foram propostas para contorná-las.
-COm a plataforma permitia que apenas duas pessoas tivesse acesso, apenas dois colaboradores fizeram o codigo.
+Como sistema tinha limites de desenvolver, so um colaborador montou o site.
 
 ---
 
